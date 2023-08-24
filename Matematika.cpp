@@ -312,8 +312,6 @@ mat::mat3 mat::Orto(float levo, float desno, float gor, float dol)
     temp.m_mat[1][1] = 2 / (gor - dol);
     temp.m_mat[0][2] = -(desno + levo) / (desno - levo);
     temp.m_mat[1][2] = -(gor + dol) / (gor - dol);
-    std::cout << desno << "    " << dol << "\n";
-    std::cout << "ORTO:\n"
-              << temp;
+
     return temp;
 }
