@@ -230,12 +230,14 @@ mat::vec2::vec2()
     x = 0;
     y = 0;
 }
+/*
 mat::vec2 &mat::vec2::operator=(vec2 &t_vec)
 {
     this->x = t_vec.x;
     this->y = t_vec.y;
     return *this;
 }
+*/
 mat::vec2 &mat::vec2::operator=(vec2 t_vec)
 {
     this->x = t_vec.x;

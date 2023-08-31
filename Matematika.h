@@ -66,7 +66,7 @@ namespace mat
         vec2(vec2 &t_vec);
         vec2(float t_x);
         vec2();
-        vec2 &operator=(vec2 &t_vec);
+        // vec2 &operator=(vec2 &t_vec);
         vec2 &operator=(vec2 t_vec);
         vec2 &operator=(float t_x);
         vec2 &operator-(float t_x);
