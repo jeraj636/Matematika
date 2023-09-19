@@ -43,12 +43,11 @@ namespace mat
         vec3(float t_x);
         vec3();
         vec3 &operator=(vec3 &t_vec);
-        vec3 &operator=(vec3 t_vec);
         vec3 &operator=(float t_x);
-        vec3 &operator-(float t_x);
-        vec3 &operator-(vec3 &t_vec);
-        vec3 &operator+(float t_x);
-        vec3 &operator+(vec3 &t_vec);
+        vec3 operator-(float t_x);
+        vec3 operator-(vec3 &t_vec);
+        vec3 operator+(float t_x);
+        vec3 operator+(vec3 &t_vec);
         vec3 *Kazalec();
         vec3 &operator*=(mat3 t_mat);
         friend std::ostream &operator<<(std::ostream &os, const vec3 &t_vec)
@@ -67,12 +66,12 @@ namespace mat
         vec2(float t_x);
         vec2();
         // vec2 &operator=(vec2 &t_vec);
-        vec2 &operator=(vec2 t_vec);
+        vec2 &operator=(vec2 &t_vec);
         vec2 &operator=(float t_x);
-        vec2 &operator-(float t_x);
-        vec2 &operator-(vec2 &t_vec);
-        vec2 &operator+(float t_x);
-        vec2 &operator+(vec2 &t_vec);
+        vec2 operator-(float t_x);
+        vec2 operator-(vec2 &t_vec);
+        vec2 operator+(float t_x);
+        vec2 operator+(vec2 &t_vec);
         vec2 *Kazalec();
         friend std::ostream &operator<<(std::ostream &os, const vec2 &t_vec)
         {
@@ -84,4 +83,15 @@ namespace mat
     mat3 velikostna(vec2 velikost);
     mat3 Premik(vec2 premik);
     mat3 Orto(float levo, float desno, float gor, float dol);
+
+    namespace fun
+    {
+        namespace lin
+        {
+            float X(float k, float n, float y);
+            float Y(float k, float n, float x);
+            float K(vec2 A, vec2 B);
+
+        }
+    }
 }
