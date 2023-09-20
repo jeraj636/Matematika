@@ -63,14 +63,9 @@ namespace mat
         float y;
         vec2(float t_x, float t_y);
         vec2(vec2 &t_vec);
-        vec2(float t_x);
         vec2();
-        // vec2 &operator=(vec2 &t_vec);
-        vec2 &operator=(vec2 &t_vec);
-        vec2 &operator=(float t_x);
-        vec2 operator-(float t_x);
+        vec2 &operator=(vec2 t_vec);
         vec2 operator-(vec2 &t_vec);
-        vec2 operator+(float t_x);
         vec2 operator+(vec2 &t_vec);
         vec2 *Kazalec();
         friend std::ostream &operator<<(std::ostream &os, const vec2 &t_vec)
@@ -91,7 +86,9 @@ namespace mat
             float X(float k, float n, float y);
             float Y(float k, float n, float x);
             float K(vec2 A, vec2 B);
+            float K(vec2 A, float n);
 
         }
     }
+
 }

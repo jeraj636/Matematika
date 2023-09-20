@@ -152,6 +152,7 @@ mat::vec3 &mat::vec3::operator=(vec3 &t_vec)
     this->z = t_vec.z;
     return *this;
 }
+/*
 mat::vec3 &mat::vec3::operator=(vec3 &t_vec)
 {
     this->x = t_vec.x;
@@ -159,6 +160,7 @@ mat::vec3 &mat::vec3::operator=(vec3 &t_vec)
     this->z = t_vec.z;
     return *this;
 }
+*/
 mat::vec3 &mat::vec3::operator=(float t_x)
 {
     this->x = t_x;
@@ -220,52 +222,21 @@ mat::vec2::vec2(vec2 &t_vec)
     x = t_vec.x;
     y = t_vec.y;
 }
-mat::vec2::vec2(float t_x)
-{
-    x = t_x;
-    y = t_x;
-}
 mat::vec2::vec2()
 {
     x = 0;
     y = 0;
 }
-/*
-mat::vec2 &mat::vec2::operator=(vec2 &t_vec)
+mat::vec2 &mat::vec2::operator=(vec2 t_vec)
 {
     this->x = t_vec.x;
     this->y = t_vec.y;
-    return *this;
-}
-*/
-mat::vec2 &mat::vec2::operator=(vec2 &t_vec)
-{
-    this->x = t_vec.x;
-    this->y = t_vec.y;
-    return *this;
-}
-mat::vec2 &mat::vec2::operator=(float t_x)
-{
-    this->x = t_x;
-    this->y = t_x;
-    return *this;
-}
-mat::vec2 mat::vec2::operator-(float t_x)
-{
-    this->x - t_x;
-    this->y - t_x;
     return *this;
 }
 mat::vec2 mat::vec2::operator-(vec2 &t_vec)
 {
     this->x - t_vec.x;
     this->y - t_vec.y;
-    return *this;
-}
-mat::vec2 mat::vec2::operator+(float t_x)
-{
-    this->x + t_x;
-    this->y + t_x;
     return *this;
 }
 mat::vec2 mat::vec2::operator+(vec2 &t_vec)
