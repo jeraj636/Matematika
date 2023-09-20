@@ -6,32 +6,32 @@
 namespace mat
 {
     float rad(float deg);
-    class mat3
+    namespace mat
     {
-    public:
-        mat3();
-        mat3(float f);
-        mat3 &operator=(mat3 &t_mat);
-        mat3 &operator=(mat3 t_mat);
-        float &DobiElement(int i, int j);
-        mat3 operator*(mat3 &t_mat);
-        mat3 operator*(float f);
-        mat3 &operator*=(mat3 &t_mat);
-        mat3 &operator*=(float f);
-        friend std::ostream &operator<<(std::ostream &os, const mat3 &t_mat)
+        class mat3
         {
-            for (int i = 0; i < 3; i++)
+        public:
+            mat3();
+            mat3(float f);
+            mat3 &operator=(const mat3 &t_mat);
+            float &DobiElement(int i, int j);
+            mat3 operator*(const mat3 &t_mat) const;
+            mat3 &operator*=(const mat3 &t_mat);
+            friend std::ostream &operator<<(std::ostream &os, const mat3 &t_mat)
             {
-                for (int j = 0; j < 3; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    os << std::setw(5) << t_mat.m_mat[i][j] << "   ";
+                    for (int j = 0; j < 3; j++)
+                    {
+                        os << std::setw(5) << t_mat.m_mat[i][j] << "   ";
+                    }
+                    os << '\n';
                 }
-                os << '\n';
+                return os;
             }
-            return os;
-        }
-        float m_mat[3][3];
-    };
+            float m_mat[3][3];
+        };
+    }
     class vec3
     {
     public:
@@ -39,17 +39,15 @@ namespace mat
         float y;
         float z;
         vec3(float t_x, float t_y, float t_z);
-        vec3(vec3 &t_vec);
-        vec3(float t_x);
+        vec3(const vec3 &t_vec);
         vec3();
-        vec3 &operator=(vec3 &t_vec);
-        vec3 &operator=(float t_x);
-        vec3 operator-(float t_x);
-        vec3 operator-(vec3 &t_vec);
-        vec3 operator+(float t_x);
-        vec3 operator+(vec3 &t_vec);
+        vec3 &operator=(const vec3 &t_vec);
+        vec3 operator-(const vec3 &t_vec) const;
+        vec3 operator+(const vec3 &t_vec) const;
+        vec3 &operator*=(const mat::mat3 &t_mat);
+        vec3 operator*(const mat::mat3 &t_mat) const;
         vec3 *Kazalec();
-        vec3 &operator*=(mat3 t_mat);
+        vec3 &operator*=(const mat::mat3 &t_mat);
         friend std::ostream &operator<<(std::ostream &os, const vec3 &t_vec)
         {
             os << std::setw(6) << t_vec.x << " " << std::setw(6) << t_vec.y << " " << std::setw(6) << t_vec.z << '\n';
@@ -62,11 +60,13 @@ namespace mat
         float x;
         float y;
         vec2(float t_x, float t_y);
-        vec2(vec2 &t_vec);
+        vec2(const vec2 &t_vec);
         vec2();
-        vec2 &operator=(vec2 t_vec);
-        vec2 operator-(vec2 &t_vec);
-        vec2 operator+(vec2 &t_vec);
+        vec2 &operator=(const vec2 &t_vec);
+        vec2 operator-(const vec2 &t_vec) const;
+        vec2 &operator-=(const vec2 &t_vec);
+        vec2 operator+(const vec2 &t_vec) const;
+        vec2 operator+=(const vec2 &t_vec);
         vec2 *Kazalec();
         friend std::ostream &operator<<(std::ostream &os, const vec2 &t_vec)
         {
@@ -74,10 +74,13 @@ namespace mat
             return os;
         }
     };
-    mat3 Vrtilna(float kot);
-    mat3 velikostna(vec2 velikost);
-    mat3 Premik(vec2 premik);
-    mat3 Orto(float levo, float desno, float gor, float dol);
+    namespace mat
+    {
+        mat3 &Vrtilna(float kot);
+        mat3 &velikostna(const vec2 &velikost);
+        mat3 &Premik(const vec2 &premik);
+        mat3 &Orto(float levo, float desno, float gor, float dol);
+    }
 
     namespace fun
     {
@@ -85,8 +88,8 @@ namespace mat
         {
             float X(float k, float n, float y);
             float Y(float k, float n, float x);
-            float K(vec2 A, vec2 B);
-            float K(vec2 A, float n);
+            float K(const vec2 &A, const vec2 &B);
+            float K(const vec2 &A, float n);
 
         }
     }
