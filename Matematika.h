@@ -90,6 +90,12 @@ namespace mat
             float Y(float k, float n, float x);
             float K(const vec2 &A, const vec2 &B);
             float K(const vec2 &A, float n);
+            float K(const vec3 &A, const vec3 &B);
+            float K(const vec3 &A, float n);
+            float N(float k, const vec2 &A);
+            float N(const vec2 &A, const vec2 &B);
+            float N(float k, const vec3 &A);
+            float N(const vec3 &A, const vec3 &B);
 
         }
     }

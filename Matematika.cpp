@@ -122,7 +122,7 @@ mat::vec3 *mat::vec3::Kazalec()
 mat::vec3 &mat::vec3::operator*=(const mat::mat3 &t_mat)
 {
     vec3 produkt(0, 0, 0);
-    produkt.x = x * t_mat.m_mat[0][0] + y * t_mat.m_mat[0][0] + z * t_mat.m_mat[0][2];
+    produkt.x = x * t_mat.m_mat[0][0] + y * t_mat.m_mat[0][1] + z * t_mat.m_mat[0][2];
     produkt.y = x * t_mat.m_mat[1][0] + y * t_mat.m_mat[1][1] + z * t_mat.m_mat[1][2];
     produkt.z = x * t_mat.m_mat[2][0] + y * t_mat.m_mat[2][1] + z * t_mat.m_mat[2][2];
     x = produkt.x;
@@ -133,7 +133,7 @@ mat::vec3 &mat::vec3::operator*=(const mat::mat3 &t_mat)
 mat::vec3 mat::vec3::operator*(const mat::mat3 &t_mat) const
 {
     vec3 produkt(0, 0, 0);
-    produkt.x = x * t_mat.m_mat[0][0] + y * t_mat.m_mat[0][0] + z * t_mat.m_mat[0][2];
+    produkt.x = x * t_mat.m_mat[0][0] + y * t_mat.m_mat[0][1] + z * t_mat.m_mat[0][2];
     produkt.y = x * t_mat.m_mat[1][0] + y * t_mat.m_mat[1][1] + z * t_mat.m_mat[1][2];
     produkt.z = x * t_mat.m_mat[2][0] + y * t_mat.m_mat[2][1] + z * t_mat.m_mat[2][2];
     return produkt;
@@ -237,4 +237,33 @@ float mat::fun::lin::K(const vec2 &A, const vec2 &B)
 float mat::fun::lin::K(const vec2 &A, float n)
 {
     return (A.y - n) / A.x;
+}
+float mat::fun::lin::K(const vec3 &A, const vec3 &B)
+{
+    // vec2 C = A - B;
+    vec3 C;
+    C = A - B;
+    return C.y / C.x;
+}
+float mat::fun::lin::K(const vec3 &A, float n)
+{
+    return (A.y - n) / A.x;
+}
+float mat::fun::lin::N(float k, const vec2 &A)
+{
+    return A.y - k * A.x;
+}
+float mat::fun::lin::N(const vec2 &A, const vec2 &B)
+{
+    float k = fun::lin::K(A, B);
+    return fun::lin::N(k, A);
+}
+float mat::fun::lin::N(float k, const vec3 &A)
+{
+    return A.y - k * A.x;
+}
+float mat::fun::lin::N(const vec3 &A, const vec3 &B)
+{
+    float k = fun::lin::K(A, B);
+    return fun::lin::N(k, A);
 }
