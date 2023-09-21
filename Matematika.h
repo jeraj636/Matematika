@@ -47,7 +47,7 @@ namespace mat
         vec3 &operator*=(const mat::mat3 &t_mat);
         vec3 operator*(const mat::mat3 &t_mat) const;
         vec3 *Kazalec();
-        vec3 &operator*=(const mat::mat3 &t_mat);
+        // vec3 &operator*=(const mat::mat3 &t_mat);
         friend std::ostream &operator<<(std::ostream &os, const vec3 &t_vec)
         {
             os << std::setw(6) << t_vec.x << " " << std::setw(6) << t_vec.y << " " << std::setw(6) << t_vec.z << '\n';
@@ -76,10 +76,10 @@ namespace mat
     };
     namespace mat
     {
-        mat3 &Vrtilna(float kot);
-        mat3 &velikostna(const vec2 &velikost);
-        mat3 &Premik(const vec2 &premik);
-        mat3 &Orto(float levo, float desno, float gor, float dol);
+        void Vrtilna(float kot, mat3 &temp);
+        void velikostna(const vec2 &velikost, mat3 &temp);
+        void Premik(const vec2 &premik, mat3 &temp);
+        void Orto(float levo, float desno, float gor, float dol, mat3 &temp);
     }
 
     namespace fun

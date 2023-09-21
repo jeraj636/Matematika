@@ -183,43 +183,41 @@ mat::vec2 *mat::vec2::Kazalec()
     return this;
 }
 
-mat::mat::mat3 &mat::mat::Vrtilna(float kot)
+void mat::mat::Vrtilna(float kot, mat::mat3 &temp)
 {
-    mat3 temp(1);
+    // mat3 temp(1);
     temp.m_mat[0][0] = cos(kot);
     temp.m_mat[0][1] = -sin(kot);
     temp.m_mat[1][0] = sin(kot);
     temp.m_mat[1][1] = cos(kot);
 
-    return temp;
+    // return temp;
 }
-mat::mat::mat3 &mat::mat::velikostna(const vec2 &velikost)
+void mat::mat::velikostna(const vec2 &velikost, mat::mat3 &temp)
 {
-    mat3 temp(1);
+    // mat3 temp(1);
     temp.m_mat[0][0] = velikost.x;
     temp.m_mat[1][1] = velikost.y;
     // temp.m_mat[2][2] = velikost.z;
-
-    return temp;
+    temp.m_mat[2][2] = 1;
+    // return temp;
 }
-mat::mat::mat3 &mat::mat::Premik(const vec2 &premik)
+void mat::mat::Premik(const vec2 &premik, mat::mat3 &temp)
 {
-    mat3 temp(1);
+
     temp.m_mat[0][2] = premik.x;
     temp.m_mat[1][2] = premik.y;
     // temp.m_mat[2][2] = premik.z;
 
-    return temp;
+    // return temp;
 }
-mat::mat::mat3 &mat::mat::Orto(float levo, float desno, float gor, float dol)
+void mat::mat::Orto(float levo, float desno, float gor, float dol, mat::mat3 &temp)
 {
-    mat3 temp(1);
+
     temp.m_mat[0][0] = 2 / (desno - levo);
     temp.m_mat[1][1] = 2 / (gor - dol);
     temp.m_mat[0][2] = -(desno + levo) / (desno - levo);
     temp.m_mat[1][2] = -(gor + dol) / (gor - dol);
-
-    return temp;
 }
 float mat::fun::lin::X(float k, float n, float y)
 {
