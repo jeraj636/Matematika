@@ -1,4 +1,4 @@
-#include "Matematika.h"
+#include "matematika.h"
 #include <cmath>
 
 float mat::rad(float deg)
